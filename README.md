@@ -1,1 +1,1 @@
-# innerdialogue
+Small prototype in response to a [reddit post](https://www.reddit.com/r/INAT/comments/agcti6/programmersi_think_this_one_might_sound_weird_but/).
