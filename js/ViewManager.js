@@ -21,7 +21,7 @@ const ViewManager = {
 		ViewManager.addUserButton.addEventListener('click', ViewManager.addUser);
 
 		ViewManager.newMessageInput.addEventListener('keydown', e => {
-			if (e.ctrlKey && e.key === 'Enter') ViewManager.addMessage();
+			if (e.key === 'Enter') ViewManager.addMessage();
 		});
 		ViewManager.addMessageButton.addEventListener('click', ViewManager.addMessage);
 	},
