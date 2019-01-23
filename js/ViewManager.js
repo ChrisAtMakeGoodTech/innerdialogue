@@ -24,6 +24,7 @@ const ViewManager = {
 			if (e.key === 'Enter') ViewManager.addMessage();
 		});
 		ViewManager.addMessageButton.addEventListener('click', ViewManager.addMessage);
+		ViewManager.sendAsUser.addEventListener('change', () => ViewManager.newMessageInput.focus());
 	},
 	renderUserList: function renderUserList(users) {
 		ViewManager.userList.innerHTML = '';
