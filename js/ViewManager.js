@@ -1,23 +1,18 @@
 'use strict';
 
 const ViewManager = {
-	userList: null,
-	newUserInput: null,
-	addUserButton: null,
-	chatName: null,
-	chatMessages: null,
-	newMessageInput: null,
-	addMessageButton: null,
 	activeUser: null,
 	init: async function init() {
 		ViewManager.userList = document.getElementById('userlist');
 		ViewManager.newUserInput = document.getElementById('newUserName');
 		ViewManager.addUserButton = document.getElementById('addUser');
 		ViewManager.chatName = document.getElementById('chatName');
+		ViewManager.sendAsName = document.getElementById('sendAsName');
 		ViewManager.chatMessages = document.getElementById('chatMessages');
 		ViewManager.chatWindow = document.getElementById('chat');
 		ViewManager.newMessageInput = document.getElementById('newMessage');
 		ViewManager.addMessageButton = document.getElementById('addMessage');
+		ViewManager.sendAsUser = document.getElementById('sendAsUser');
 
 		ViewManager.loadUserList();
 		ViewManager.newUserInput.addEventListener('keydown', e => {
@@ -72,7 +67,7 @@ const ViewManager = {
 		if (newMessage) {
 			ViewManager.newMessageInput.value = '';
 			const activeUserID = Number(ViewManager.newMessageInput.getAttribute('data-active-user'));
-			await DataManager.addMessage(new Message(activeUserID, newMessage, false));
+			await DataManager.addMessage(new Message(activeUserID, newMessage, ViewManager.sendAsUser.checked));
 			ViewManager.loadMessages(activeUserID);
 		}
 	},
@@ -87,6 +82,8 @@ const ViewManager = {
 			ViewManager.chatWindow.style.display = 'block';
 		}
 		ViewManager.chatName.innerText = user.name;
+		ViewManager.sendAsName.innerText = user.name;
+		ViewManager.sendAsUser.checked = false;
 		ViewManager.renderMessages(messages);
 		ViewManager.newMessageInput.value = '';
 		ViewManager.newMessageInput.setAttribute('data-active-user', id);
