@@ -43,6 +43,7 @@ const ViewManager = {
 		messages.forEach(m => {
 			const li = document.createElement('li');
 			li.innerText = `${m.isFromUser ? ViewManager.activeUser.name : 'You'}: ${m.text}`;
+			li.classList.add(m.isFromUser ? 'from-user' : 'from-self');
 			ViewManager.chatMessages.appendChild(li);
 		});
 	},
