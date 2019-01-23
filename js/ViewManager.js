@@ -29,7 +29,7 @@ const ViewManager = {
 		ViewManager.userList.innerHTML = '';
 		users.forEach(user => {
 			const newUser = document.createElement('li');
-			newUser.innerHTML = `<button data-choose-user="${user.id}">${user.name}</button>`;
+			newUser.innerHTML = `<button data-choose-user="${user.id}"><div class="user-icon">${user.name[0]}</div> <span class="user-name">${user.name}</span></button>`;
 			ViewManager.userList.appendChild(newUser);
 		});
 		ViewManager.userList.querySelectorAll('[data-choose-user]').forEach(el => {
@@ -78,8 +78,8 @@ const ViewManager = {
 
 		ViewManager.activeUser = user;
 
-		if (ViewManager.chatWindow.style.display === '') {
-			ViewManager.chatWindow.style.display = 'block';
+		if (ViewManager.chatWindow.classList.contains('hidden')) {
+			ViewManager.chatWindow.classList.remove('hidden');
 		}
 		ViewManager.chatName.innerText = user.name;
 		ViewManager.sendAsName.innerText = user.name;

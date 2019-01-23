@@ -1,3 +1,88 @@
+:root {
+	--text-color: #eee;
+	--bg-color: #222;
+}
+
+html,
+body,
+.container,
+#users,
 #chat {
-	display: none;
+	min-height: 100vh;
+}
+
+h2 {
+	margin-top: 0;
+}
+
+.hidden {
+	display: none !important;
+}
+
+.container {
+	color: var(--text-color);
+	background: var(--bg-color);
+}
+
+section {
+	padding: 8px;
+	float: left;
+	box-sizing: border-box;
+}
+
+input {
+	max-width: 100%;
+}
+
+#users {
+	width: 140px;
+	border-right: 3px solid black;
+}
+
+#chat {}
+
+#userlist {
+	list-style: none;
+	padding: 0;
+}
+
+.container::after {
+	clear: both;
+	content: '';
+	display: block;
+}
+
+.user-icon {
+	height: 48px;
+	width: 48px;
+	background: red;
+	line-height: 48px;
+	text-align: center;
+	border-radius: 8px;
+	font-size: 32px;
+	display: inline-block;
+	color: #000;
+}
+
+.user-name {
+	display: inline-block;
+}
+
+button[data-choose-user] {
+	text-align: left;
+	display: block;
+	width: 100%;
+	padding: 8px;
+	padding-left: 0;
+	border-radius: 4px;
+	border: none;
+	background: transparent;
+	color: var(--text-color);
+	cursor: pointer;
+}
+
+@media (min-width: 800px) {
+	#users {
+		width: 200px;
+	}
 }
