@@ -8,6 +8,7 @@ const ViewManager = {
 	chatMessages: null,
 	newMessageInput: null,
 	addMessageButton: null,
+	activeUser: null,
 	init: async function init() {
 		ViewManager.userList = document.getElementById('userlist');
 		ViewManager.newUserInput = document.getElementById('newUserName');
@@ -46,8 +47,8 @@ const ViewManager = {
 		ViewManager.chatMessages.innerHTML = '';
 		messages.forEach(m => {
 			const li = document.createElement('li');
-			li.innerText = m.text;
-			ViewManager.chatMessages.appendChild(li)
+			li.innerText = `${m.isFromUser ? ViewManager.activeUser.name : 'You'}: ${m.text}`;
+			ViewManager.chatMessages.appendChild(li);
 		});
 	},
 	loadUserList: async function loadUserList() {
@@ -80,6 +81,8 @@ const ViewManager = {
 		const user = userData[0];
 		const messages = userData[1];
 
+		ViewManager.activeUser = user;
+
 		if (ViewManager.chatWindow.style.display === '') {
 			ViewManager.chatWindow.style.display = 'block';
 		}
@@ -87,7 +90,5 @@ const ViewManager = {
 		ViewManager.renderMessages(messages);
 		ViewManager.newMessageInput.value = '';
 		ViewManager.newMessageInput.setAttribute('data-active-user', id);
-
-		console.log(user, messages);
 	},
 };
